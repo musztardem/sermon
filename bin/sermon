@@ -3,5 +3,12 @@
 require "bundler/setup"
 require "sermon"
 require "pry"
+require "slop"
+
+opts = Slop.parse do |o|
+  o.on '--setup', 'Makes copy of config file' do
+    Sermon.setup
+  end
+end
 
 binding.pry
