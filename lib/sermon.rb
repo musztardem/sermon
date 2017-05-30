@@ -1,5 +1,6 @@
 require "sermon/version"
 require "fileutils"
+require "config/config_validator"
 
 module Sermon
 
