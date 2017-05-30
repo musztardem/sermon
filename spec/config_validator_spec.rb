@@ -12,7 +12,7 @@ RSpec.describe Sermon::ConfigValidator do
 
     it 'should be valid without channel name in slack notifier' do
       errors = described_class.new(config_without_channel_name).errors
-      expect(errors.size).to be_empty
+      expect(errors).to be_empty
     end
   end
 
@@ -23,11 +23,11 @@ RSpec.describe Sermon::ConfigValidator do
     it 'should not be valid without checks' do
       errors = described_class.new(config_without_checks).errors
       expect(errors.size).to eq 1
-      expect(errors).to include 'At least one check should be contained in config.'
+      expect(errors).to include 'At least one check should be contained in config'
     end
 
     it 'should not be valid without notifiers' do
-      errors = described_class.new(config_without_notifiers)
+      errors = described_class.new(config_without_notifiers).errors
       expect(errors.size).to eq 1
       expect(errors).to include 'At least one notification channel should be contained in config'
     end
