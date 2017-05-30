@@ -19,3 +19,4 @@ module Sermon
       @errors << "Memory usage is too high: #{free}MB available / #{@min_size}MB expected" if free < @min_size
     end
   end
+end

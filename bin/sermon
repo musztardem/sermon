@@ -14,10 +14,4 @@ opts = Slop.parse do |o|
   end
 end
 
-config_path = File.join(File.dirname(__FILE__), '..', 'lib', 'test', 'config', 'sermon.yaml')
-config = YAML.load_file(config_path)
-
-config_processor = Sermon::ConfigProcessor.new(config)
-config_processor.process
-
-#Sermon.start
+Sermon.start()
