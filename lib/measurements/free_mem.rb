@@ -13,7 +13,7 @@ module Sermon
       @errors = []
     end
 
-    def perform_measure
+    def perform_measurement
       memory = Vmstat.snapshot.memory
       free = (memory.free_bytes + memory.inactive_bytes) / MB
       @errors << "Memory usage is too high: #{free}MB available / #{@min_size}MB expected" if free < @min_size

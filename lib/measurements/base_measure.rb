@@ -1,6 +1,6 @@
 module Sermon
   module BaseMeasure
-    def perform_measure
+    def perform_measurement
       raise NotImplementedError
     end
   end

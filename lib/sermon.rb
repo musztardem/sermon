@@ -38,8 +38,29 @@ module Sermon
     return config_processor.checks, config_processor.notifiers
   end
 
+  def self.prepare_error_message(errors)
+    return nil if errors.empty?
+    error_message = "Sermon detected following issues: \n"
+    errors.flatten.each do |err|
+      error_message << "\t#{err}\n"
+    end
+    error_message
+  end
+
   def self.start
     check_for_config_file
     checks, notifiers = process_config
+
+    errors = []
+    checks.each do |check|
+      check.perform_measurement
+      errors << check.errors if check.errors.any?
+    end
+
+    error_message = prepare_error_message(errors)
+
+    notifiers.each do |notifier|
+      notifier.notify error_message if error_message
+    end
   end
 end
