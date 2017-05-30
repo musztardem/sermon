@@ -1,6 +1,12 @@
 require "sermon/version"
 require "fileutils"
 require "config/config_validator"
+require "config/config_processor"
+require "notifiers/notifier"
+require "notifiers/mail_notifier"
+require "measurements/base_measure"
+require "measurements/free_space"
+require "sermon/constants"
 
 module Sermon
 
@@ -22,4 +28,6 @@ module Sermon
     end
   end
 
+  def self.start
+  end
 end

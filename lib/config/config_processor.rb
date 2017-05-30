@@ -1,4 +1,3 @@
-require 'yaml'
 require 'colorize'
 
 module Sermon
@@ -6,8 +5,8 @@ module Sermon
     attr_reader :checks
     attr_reader :notifiers
 
-    def initialize(config_path)
-      @config = YAML.load_file(config_path)
+    def initialize(config)
+      @config = config
       @checks = []
       @notifiers = []
     end

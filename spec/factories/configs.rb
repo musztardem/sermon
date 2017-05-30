@@ -67,5 +67,15 @@ FactoryGirl.define do
 
       initialize_with { attributes.stringify_keys }
     end
+
+    trait :valid_mail_and_free_space do
+      emails      ["sample@email.com", "email@sample.com"]
+      free_space  {{
+        "/tmp" => 64,
+        "/var/mysql" => 1024
+      }}
+
+      initialize_with { attributes.stringify_keys }
+    end
   end
 end
