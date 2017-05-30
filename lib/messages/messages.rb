@@ -1,5 +1,18 @@
 module Sermon
   module Messages
+    
+    def self.sermon_file_copied(target_path)
+      "Config file was copied to #{target_path}.\nEdit it accordingly to your needs."
+    end
+
+    def self.sermon_file_not_found
+      "Config file not found.\nRun sermon --setup"
+    end
+
+    def self.sermon_detected_issues
+      "Sermon detected following issues: \n"
+    end
+
     def self.config_processor_execution_aborted
       'Execution aborted; following errors were detected: '
     end

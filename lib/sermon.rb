@@ -19,16 +19,13 @@ module Sermon
 
   def self.setup
     FileUtils.cp(CONFIG_PATH, TARGET_PATH)
-
-    puts "Config file was copied to #{TARGET_PATH}."
-    puts 'Edit it accordingly to your needs.'
+    puts Messages.sermon_file_copied
   end
 
   def self.check_for_config_file
     unless Pathname.new(TARGET_PATH).exist?
-      puts "Config file not found."
-      puts "Run sermon --setup"
-      exit
+      puts Messages.sermon_file_not_found
+      exit 1
     end
   end
 
@@ -41,7 +38,7 @@ module Sermon
 
   def self.prepare_error_message(errors)
     return nil if errors.empty?
-    error_message = "Sermon detected following issues: \n"
+    error_message = Messages.sermon_detected_issues
     errors.flatten.each do |err|
       error_message << "\t#{err}\n"
     end
