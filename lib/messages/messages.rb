@@ -23,5 +23,17 @@ module Sermon
     def self.validator_emails
       'Emails key should get list of emails (Array)'
     end
+
+    def self.free_mem_error(free, min)
+      "Memory usage is too high: #{free}MB available / #{min}MB expected"
+    end
+
+    def self.free_space_error(file, file_size, min_size)
+      "Maximum #{file} size exceeded: #{file_size}MB found / at most #{min_size}MB expected"
+    end
+
+    def self.ping_error(addr)
+      "Cannot ping address #{addr}"
+    end
   end
 end

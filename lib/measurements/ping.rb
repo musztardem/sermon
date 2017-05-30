@@ -12,7 +12,7 @@ module Sermon
 
     def perform_measurement
       p = Net::Ping::External.new(@addr)
-      @errors << "Cannot ping address #{@addr}" unless p.ping?
+      @errors << Messages.ping_error(@addr) unless p.ping?
     end
   end
 end

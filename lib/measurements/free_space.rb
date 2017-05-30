@@ -11,7 +11,7 @@ module Sermon
     def perform_measurement
       @files_hash.each do |file, size|
         file_size = `du -cshm #{file}`.split("\t").first.to_i
-        @errors << "Maximum #{file} size exceeded: #{file_size}MB found / at most #{size}MB expected" if size < file_size
+        @errors << Messages.free_space_error(file, file_size, size) if size < file_size
       end
     end
   end
