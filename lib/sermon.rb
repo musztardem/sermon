@@ -1,4 +1,3 @@
-require "sermon/version"
 require "fileutils"
 require "config/config_validator"
 require "config/config_processor"
@@ -9,7 +8,9 @@ require "measurements/base_measure"
 require "measurements/free_space"
 require "measurements/free_mem"
 require "measurements/ping"
+require "messages/messages"
 require "sermon/constants"
+require "sermon/version"
 
 module Sermon
 

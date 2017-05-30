@@ -25,27 +25,27 @@ module Sermon
     end
 
     def verify_checks_existence
-      @errors << 'At least one check should be contained in config' if
+      @errors << Messages.validator_checks_existence if
         (Sermon::CHECKS & @config.keys).empty?
     end
 
     def verify_notifiations_existence
-      @errors << 'At least one notification channel should be contained in config' if
+      @errors << Messages.validator_checks_notifiers if
         (Sermon::NOTIFIERS & @config.keys).empty?
     end
 
     def verify_webhook_url
-      @errors << 'Webhook URL should be specified' if
+      @errors << Messages.validator_webhook_url if
         @config['slack'] && @config['slack']['webhook_url'].nil?
     end
 
     def verify_free_space_format
-      @errors << 'free_space should get key/value collection' if
+      @errors << Messages.validator_free_space if
         @config['free_space'] && @config['free_space'].class != Hash
     end
 
     def verify_emails_format
-      @errors << 'Emails key should get list of emails (Array)' if
+      @errors << Messages.validator_emails if
         @config['emails'] && @config['emails'].class != Array
     end
   end

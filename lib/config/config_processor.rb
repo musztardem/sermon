@@ -18,7 +18,7 @@ module Sermon
         collect_notifiers
         collect_measuring_tools
       else
-        puts 'Execution aborted; following errors were detected: '
+        puts Messages.config_processor_execution_aborted
         config_validator.errors.each do |err|
           puts "\t#{err}".red
         end
