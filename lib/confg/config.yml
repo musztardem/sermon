@@ -1,0 +1,13 @@
+ping: 8.8.8.8
+free_mem: 256
+free_space:
+  /tmp: 64
+  /var/mysql: 1024
+
+emails: 
+  - test@mail.com
+  - sample@mail.com
+
+slack:
+  webhook_url: https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX
+  channel: general
