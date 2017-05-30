@@ -39,4 +39,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "mail", "~> 2.6"
   spec.add_dependency "net-ping", "~> 2.0.1"
   spec.add_dependency "vmstat", "~> 2.1"
+  spec.add_dependency "colorize", "~> 0.8.1"
 end

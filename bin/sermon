@@ -5,10 +5,16 @@ require "sermon"
 require "pry"
 require "slop"
 
+require "config/sermon_processor"
+
 opts = Slop.parse do |o|
   o.on '--setup', 'Makes copy of config file' do
     Sermon.setup
   end
 end
+
+config_path = File.join(File.dirname(__FILE__), '..', 'lib', 'test', 'config', 'sermon.yaml')
+config_processor = Sermon::ConfigProcessor.new(config_path)
+config_processor.process
 
 binding.pry
