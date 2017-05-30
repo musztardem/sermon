@@ -37,4 +37,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "factory_girl", "~> 4.8.0"
   spec.add_dependency "slack-notifier", "~> 1.5"
   spec.add_dependency "mail", "~> 2.6"
+  spec.add_dependency "net-ping", "~> 2.0.1"
+  spec.add_dependency "vmstat", "~> 2.1"
 end
