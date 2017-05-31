@@ -11,7 +11,7 @@ module Sermon
     end
 
     def valid?
-      @errors.empty? ? true : false
+      @errors.empty?
     end
 
     private
