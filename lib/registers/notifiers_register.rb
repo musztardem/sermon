@@ -2,6 +2,7 @@ require 'singleton'
 
 module Sermon
   class NotifiersRegister
+    include BaseRegister
     include Singleton
     attr_reader :register
 
