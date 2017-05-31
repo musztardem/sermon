@@ -1,5 +1,4 @@
-require "spec_helper"
-require 'pry'
+require 'spec_helper'
 
 RSpec.describe Sermon::ConfigValidator do
   describe 'valid configuration' do

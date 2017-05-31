@@ -1,6 +1,5 @@
 module Sermon
   module Messages
-    
     def self.sermon_file_copied(target_path)
       "Config file was copied to #{target_path}.\nEdit it accordingly to your needs."
     end

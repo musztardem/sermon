@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "sermon"
-require "slop"
+require 'bundler/setup'
+require 'sermon'
+require 'slop'
 
 opts = Slop.parse do |o|
   o.on '--setup', 'Makes copy of config file' do
@@ -10,4 +10,4 @@ opts = Slop.parse do |o|
   end
 end
 
-Sermon.start()
+Sermon.start

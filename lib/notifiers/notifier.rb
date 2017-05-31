@@ -1,9 +1,7 @@
 module Sermon
   module Notifier
-
-    def notify(message)
+    def notify(_message)
       raise NotImplementedError
     end
-
   end
 end

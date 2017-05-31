@@ -1,7 +1,6 @@
 require 'vmstat'
 
 module Sermon
-
   MB = 1024**2
 
   class FreeMem
