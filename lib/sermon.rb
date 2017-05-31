@@ -9,8 +9,12 @@ require "measurements/free_space"
 require "measurements/free_mem"
 require "measurements/ping"
 require "messages/messages"
+require "registers/notifiers_register"
+require "registers/measurement_register"
 require "sermon/constants"
 require "sermon/version"
+require "exceptions/invalid_register"
+
 
 module Sermon
 
@@ -33,7 +37,7 @@ module Sermon
     config = YAML.load_file(TARGET_PATH)
     config_processor = Sermon::ConfigProcessor.new(config)
     config_processor.process
-    return config_processor.checks, config_processor.notifiers
+    binding.pry
   end
 
   def self.prepare_error_message(errors)
@@ -47,7 +51,9 @@ module Sermon
 
   def self.start
     check_for_config_file
-    checks, notifiers = process_config
+    process_config
+    checks = MeasurementRegister.instance.register
+    notifiers = NotifiersRegister.instance.register
 
     errors = []
     checks.each do |check|
