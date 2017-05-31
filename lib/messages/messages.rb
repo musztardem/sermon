@@ -41,7 +41,7 @@ module Sermon
     end
 
     def self.free_mem_error(free, min)
-      "Memory usage is too high: #{free}MB available / #{min}MB expected"
+      "Memory usage is too high: #{free}MB available / at least #{min}MB expected"
     end
 
     def self.free_space_error(file, file_size, min_size)
