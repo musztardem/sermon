@@ -2,11 +2,7 @@
 
 require "bundler/setup"
 require "sermon"
-require "pry"
 require "slop"
-require "yaml"
-
-require "config/config_processor"
 
 opts = Slop.parse do |o|
   o.on '--setup', 'Makes copy of config file' do
