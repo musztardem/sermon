@@ -1,38 +1,38 @@
 # Sermon
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/sermon`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'sermon'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install sermon
+> Sermon is simple server monitoring script with email and slack notifications.
 
 ## Usage
 
-TODO: Write usage instructions here
+In order to use Sermon, you need to place configuration file in your `$HOME` directory. File should be called `.sermon.yml` and it can be
+generated automatically using following command:
+```bash
+$ sermon --setup
+```
+Attributes which can be defined in configuration file are following:
+* `ping` - gets list of addresses to ping in order to check connection.
+* `free_space` - gets collection of key/value entries. Keys are directories path and values expresses maximum value of space (in MB).
+* `free_mem` - gets maximal memory usage (in MB).
+* `emails` - gets list of emails. When one or more checks fail, notifications will be send on those email addresses.
+* `slack` - gets `webhook_url` and `channel` to which notification will be send. `webhook_url` parameter is required, while `channel` is optional.
 
-## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+## How does it work?
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+In simple steps, sermon performs following actions:
+1. Reads configuration file.
+2. Performs some basic validations (e.g. at least one communication channel - slack or email - must be defined).
+3. If validation is successful - creates notifying and measuring objects and places them in specific registers.
+4. Loads notifying and measuring objects from registry.
+5. Performs checks and collects errors.
+6. Sends notifications if any error was found.
+
+![Notification](notification.png)
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/sermon.
+Bug reports and pull requests are welcome on GitHub at https://github.com/musztardem/sermon.
 
 
 ## License
