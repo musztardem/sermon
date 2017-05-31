@@ -62,4 +62,14 @@ RSpec.describe Sermon::ConfigValidator do
       expect(errors).to include 'Emails key should get list of emails (Array)'
     end
   end
+
+  describe 'invalid ping format' do
+    let(:config_with_invalid_ping_format) { build :config, :with_invalid_ping_format }
+
+    it 'should not be valid with something else than array' do
+      errors = described_class.new(config_with_invalid_ping_format).errors
+      expect(errors.size).to eq 1
+      expect(errors).to include 'Ping key should get list of addresses (Array)'
+    end
+  end
 end

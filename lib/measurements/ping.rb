@@ -5,14 +5,16 @@ module Sermon
     include BaseMeasure
     attr_reader :errors
 
-    def initialize(addr)
-      @addr = addr
+    def initialize(addrs)
+      @addrs = addrs
       @errors = []
     end
 
     def perform_measurement
-      p = Net::Ping::External.new(@addr)
-      @errors << Messages.ping_error(@addr) unless p.ping?
+      @addrs.each do |addr|
+        p = Net::Ping::External.new(addr)
+        @errors << Messages.ping_error(addr) unless p.ping?
+      end
     end
   end
 end

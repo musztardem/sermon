@@ -37,6 +37,10 @@ module Sermon
       'Emails key should get list of emails (Array)'
     end
 
+    def self.validator_pings
+      'Ping key should get list of addresses (Array)'
+    end
+
     def self.free_mem_error(free, min)
       "Memory usage is too high: #{free}MB available / #{min}MB expected"
     end

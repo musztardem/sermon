@@ -22,6 +22,7 @@ module Sermon
       verify_webhook_url
       verify_free_space_format
       verify_emails_format
+      verify_ping_format
     end
 
     def verify_checks_existence
@@ -47,6 +48,11 @@ module Sermon
     def verify_emails_format
       @errors << Messages.validator_emails if
         @config['emails'] && @config['emails'].class != Array
+    end
+
+    def verify_ping_format
+      @errors << Messages.validator_pings if
+        @config['ping'] && @config['ping'].class != Array
     end
   end
 end

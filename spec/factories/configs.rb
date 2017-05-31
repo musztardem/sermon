@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :config, class: Hash do
     trait :valid do
-      ping      "8.8.8.8"
+      ping      ["8.8.8.8", "8.8.8.1"]
       free_mem  256
       emails    ["sample@email.com", "email@sample.com"]
 
@@ -19,7 +19,7 @@ FactoryGirl.define do
     end
 
     trait :without_notifiers do
-      ping        "8.8.8.8"
+      ping        ["8.8.8.8", "8.8.8.1"]
       free_mem    256
       free_space  {{
         "/tmp" => 64,
@@ -30,7 +30,7 @@ FactoryGirl.define do
     end
 
     trait :without_channel_name do
-      ping      "8.8.8.8"
+      ping      ["8.8.8.8", "8.8.8.1"]
       free_mem   256
       emails     ["sample@email.com", "email@sample.com"]
       slack      {{
@@ -41,7 +41,7 @@ FactoryGirl.define do
     end
 
     trait :without_webhook_url do
-      ping      "8.8.8.8"
+      ping      ["8.8.8.8", "8.8.8.1"]
       free_mem   256
       emails     ["sample@email.com", "email@sample.com"]
       slack      {{
@@ -52,7 +52,7 @@ FactoryGirl.define do
     end
 
     trait :without_free_space_in_hash do
-      ping        "8.8.8.8"
+      ping        ["8.8.8.8", "8.8.8.1"]
       free_mem    256
       free_space  ["/tmp", 64, "/var/mysql", 1024]
       emails      ["sample@email.com", "email@sample.com"]
@@ -61,7 +61,7 @@ FactoryGirl.define do
     end
 
     trait :with_invalid_emails_format do
-      ping        "8.8.8.8"
+      ping        ["8.8.8.8", "8.8.8.1"]
       free_mem    256
       emails      "sample@email.com email@sample.com"
 
@@ -74,6 +74,13 @@ FactoryGirl.define do
         "/tmp" => 64,
         "/var/mysql" => 1024
       }}
+
+      initialize_with { attributes.stringify_keys }
+    end
+
+    trait :with_invalid_ping_format do
+      ping      "8.8.8.8"
+      emails    ["sample@email.com", "email@sample.com"]
 
       initialize_with { attributes.stringify_keys }
     end

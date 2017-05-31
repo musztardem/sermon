@@ -1,4 +1,5 @@
-ping: 8.8.8.8
+ping: 
+  - 8.8.8.8
 free_mem: 256
 free_space:
   /tmp: 64
