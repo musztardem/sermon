@@ -11,7 +11,6 @@ module Sermon
 
     def add(tool)
       # only for classes implementing Notifier "interface"
-      binding.pry
       raise InvalidRegister unless tool.class.ancestors.include? Notifier
       @register << tool
     end

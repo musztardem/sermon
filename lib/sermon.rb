@@ -1,23 +1,21 @@
-require "fileutils"
-require "config/config_validator"
-require "config/config_processor"
-require "notifiers/notifier"
-require "notifiers/slack_notifier"
-require "notifiers/mail_notifier"
-require "measurements/base_measure"
-require "measurements/free_space"
-require "measurements/free_mem"
-require "measurements/ping"
-require "messages/messages"
-require "registers/notifiers_register"
-require "registers/measurement_register"
-require "sermon/constants"
-require "sermon/version"
-require "exceptions/invalid_register"
-
+require 'fileutils'
+require 'config/config_validator'
+require 'config/config_processor'
+require 'notifiers/notifier'
+require 'notifiers/slack_notifier'
+require 'notifiers/mail_notifier'
+require 'measurements/base_measure'
+require 'measurements/free_space'
+require 'measurements/free_mem'
+require 'measurements/ping'
+require 'messages/messages'
+require 'registers/notifiers_register'
+require 'registers/measurement_register'
+require 'sermon/constants'
+require 'sermon/version'
+require 'exceptions/invalid_register'
 
 module Sermon
-
   CONFIG_PATH = File.expand_path(File.join(File.dirname(__FILE__), 'config', 'sermon.yml'))
   TARGET_PATH = File.expand_path('~/.sermon.yml')
 
@@ -37,7 +35,6 @@ module Sermon
     config = YAML.load_file(TARGET_PATH)
     config_processor = Sermon::ConfigProcessor.new(config)
     config_processor.process
-    binding.pry
   end
 
   def self.prepare_error_message(errors)

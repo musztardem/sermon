@@ -1,8 +1,8 @@
-require "spec_helper"
+require 'spec_helper'
 require 'pry'
 
 RSpec.describe Sermon::ConfigProcessor do
-  describe "#process" do
+  describe '#process' do
     let(:config_mail_and_free_space) { build :config, :valid_mail_and_free_space }
 
     it "should return #{described_class} with MailNotifier and FreeMem" do

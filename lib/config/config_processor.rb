@@ -26,10 +26,12 @@ module Sermon
     def register_notifiers
       register = NotifiersRegister.instance
       register.add MailNotifier.new(@config['emails']) if @config['emails']
-      register.add SlackNotifier.new(
-        @config['slack']['webhook_url'],
-        @config['slack']['channel']
-      ) if @config['slack']
+      if @config['slack']
+        register.add SlackNotifier.new(
+          @config['slack']['webhook_url'],
+          @config['slack']['channel']
+        )
+      end
     end
 
     def register_measuring_tools

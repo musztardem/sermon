@@ -1,7 +1,6 @@
 require 'singleton'
 
 module Sermon
-
   class MeasurementRegister
     include Singleton
     attr_reader :register
